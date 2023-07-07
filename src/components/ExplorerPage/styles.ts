@@ -1,7 +1,7 @@
 import { css, styled } from 'styled-components'
 
 interface CategoryItemProps {
-  isActive?: boolean
+  active?: boolean
 }
 
 export const ExplorerPageContainer = styled.div`
@@ -101,7 +101,7 @@ export const CategoryItem = styled.li<CategoryItemProps>`
   }
 
   ${(props) =>
-    props.isActive
+    props.active
       ? css`
           background: ${(props) => props.theme.colors.purple[200]};
           color: ${(props) => props.theme.colors.gray[100]};
