@@ -24,8 +24,8 @@ const ratingSchema = z.object({
 })
 
 type RatingFormValues = z.infer<typeof ratingSchema> & {
-  user_id: string
-  book_id: string
+  user_id?: string
+  book_id?: string
   rate: number
 }
 
