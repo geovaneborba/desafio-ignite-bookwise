@@ -26,7 +26,9 @@ export const Content = styled(Dialog.Content)`
   transform: translate(50%, -50%);
   padding: 1rem;
 
-  button {
+  > button {
+    all: unset;
+    cursor: pointer;
     align-self: end;
 
     svg {
