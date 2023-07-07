@@ -1,11 +1,10 @@
 import { X, Check } from 'phosphor-react'
 import { Avatar } from '../Avatar'
 import { Rating } from '../Rating'
-import Image from 'next/image'
 import { useCallback, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import * as z from 'zod'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '@/lib/axios'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -24,7 +23,11 @@ const ratingSchema = z.object({
     .max(450, 'O texto de avaliação não deve ser maior que 450 caracteres'),
 })
 
-type RatingFormValues = z.infer<typeof ratingSchema>
+type RatingFormValues = z.infer<typeof ratingSchema> & {
+  user_id: string
+  book_id: string
+  rate: number
+}
 
 interface FormAddNewRatingProps {
   bookId?: string
@@ -54,7 +57,7 @@ export function FormAddNewRating({
   }, [])
 
   const { mutateAsync: AddNewRating } = useMutation(
-    async (data: any) => {
+    async (data: RatingFormValues) => {
       return await api.post('/ratings/create', {
         data: {
           rate: data.rate,

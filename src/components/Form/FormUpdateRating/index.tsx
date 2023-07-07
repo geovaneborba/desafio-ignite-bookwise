@@ -1,7 +1,6 @@
 import { X, Check } from 'phosphor-react'
 import { Avatar } from '../../Avatar'
 import { Rating } from '../../Rating'
-import Image from 'next/image'
 import { useCallback, useState } from 'react'
 import * as z from 'zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -23,7 +22,9 @@ const ratingSchema = z.object({
     .max(450, 'O texto de avaliação não deve ser maior que 450 caracteres'),
 })
 
-type RatingFormValues = z.infer<typeof ratingSchema>
+type RatingFormValues = z.infer<typeof ratingSchema> & {
+  rate: number
+}
 
 interface FormUpdateRatingProps {
   rating?: {
@@ -69,7 +70,7 @@ export function FormUpdateRating({
   }, [])
 
   const { mutateAsync: UpdateRating } = useMutation(
-    async (data: any) => {
+    async (data: RatingFormValues) => {
       return await api.put(`/ratings/update/${rating?.id}`, {
         data: {
           rate: data.rate,
