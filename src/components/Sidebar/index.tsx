@@ -35,7 +35,7 @@ export function Sidebar() {
       <ul>
         {navLinks.map(({ href, name, icon }) => (
           <li key={name}>
-            <StyledLink href={href} isActive={pathname === href}>
+            <StyledLink href={href} active={pathname === href}>
               {icon}
               {name}
             </StyledLink>
@@ -46,7 +46,7 @@ export function Sidebar() {
           <li>
             <StyledLink
               href={`/profile/${session?.user.id}`}
-              isActive={pathname.includes('/profile')}
+              active={pathname.includes('/profile')}
             >
               <User size={24} />
               Perfil

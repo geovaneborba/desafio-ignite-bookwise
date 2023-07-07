@@ -45,6 +45,7 @@ export default async function handler(
         (avgRating) => avgRating.book_id === book.id
       )
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { ratings, ...bookInfo } = book
 
       return {

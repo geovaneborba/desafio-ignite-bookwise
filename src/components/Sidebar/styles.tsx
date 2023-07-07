@@ -3,7 +3,7 @@ import backgroundImg from '@/assets/bg-sidebar.png'
 import Link from 'next/link'
 
 interface StyledLinkProps {
-  isActive?: boolean
+  active?: boolean
 }
 
 export const Aside = styled.aside`
@@ -43,7 +43,7 @@ export const StyledLink = styled(Link)<StyledLinkProps>`
   }
 
   ${(props) =>
-    props.isActive
+    props.active
       ? css`
           color: ${(props) => props.theme.colors.gray[100]};
           font-weight: bold;

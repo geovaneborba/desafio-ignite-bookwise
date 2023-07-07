@@ -109,7 +109,7 @@ const ExplorerPage: NextPageWithLayout = () => {
 
       <ul>
         <CategoryItem
-          isActive={selectedCategory === ''}
+          active={selectedCategory === ''}
           onClick={() => handleSelectedCategory('')}
         >
           All

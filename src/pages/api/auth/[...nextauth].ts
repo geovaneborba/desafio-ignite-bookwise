@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import NextAuth from 'next-auth/next'
 import GithubProvider, { GithubProfile } from 'next-auth/providers/github'
 import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
